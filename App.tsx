@@ -1,31 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import * as eva from '@eva-design/eva';
+import { ApplicationProvider, Layout, Text } from '@ui-kitten/components';
+
+const HomeScreen = () => (
+    <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text category="h1">HELLO WORLD</Text>
+    </Layout>
+);
 
 export default function App() {
     return (
-        <View style={styles.container}>
-            <Text>Hi Ying ur my bubba</Text>
-            <Text>your BUTTTTT is nice</Text>
-            <Image
-                style={styles.image}
-                source={{
-                    uri: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZe4g2c3QZMbVPeRcohes8fesioiPM0FnxhA&usqp=CAU`,
-                }}
-            />
-            <StatusBar style="auto" />
-        </View>
+        <ApplicationProvider {...eva} theme={eva.light}>
+            <HomeScreen />
+        </ApplicationProvider>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    image: {
-        width: 300,
-        height: 300,
-    },
-});
