@@ -1,16 +1,21 @@
 import * as eva from '@eva-design/eva';
-import { ApplicationProvider, Layout, Text } from '@ui-kitten/components';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { ApplicationProvider } from '@ui-kitten/components';
+import { DetailsScreen } from 'src/screens/Details';
+import { HomeScreen } from 'src/screens/Home';
 
-const HomeScreen = () => (
-    <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text category="h1">HELLO WORLD</Text>
-    </Layout>
-);
+const Stack = createNativeStackNavigator();
 
 export default function App() {
     return (
-        <ApplicationProvider {...eva} theme={eva.light}>
-            <HomeScreen />
+        <ApplicationProvider {...eva} theme={eva.dark}>
+            <NavigationContainer>
+                <Stack.Navigator>
+                    <Stack.Screen name="Home" component={HomeScreen} />
+                    <Stack.Screen name="Details" component={DetailsScreen} />
+                </Stack.Navigator>
+            </NavigationContainer>
         </ApplicationProvider>
     );
 }
